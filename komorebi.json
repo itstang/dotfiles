@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.39/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 4,
+  "default_container_padding": 4,
+  "border": false,
+  "border_width": 3,
+  "border_offset": -1,
+  "border_colours": {
+    "single": {
+      "r": 255,
+      "g": 0,
+      "b": 0
+    }
+  },
+  "animation": {
+    "enabled": true,
+    "duration": 150,
+    "fps": 60,
+    "style": "EaseOutSine"
+  },
+  "theme": {
+    "palette": "Base16",
+    "name": "Ashes",
+    "unfocused_border": "Base03",
+    "bar_accent": "Base0D"
+  },
+  "ignore_rules": [
+    {
+      "kind": "Exe",
+      "id": "Wootility.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "Riot Client.exe"
+    },
+    {
+      "kind": "Title",
+      "id": "Jingle v1.3.0"
+    }
+  ],
+  "display_index_preferences": {
+    "0": "306NTNHA9639",
+    "1": "009NTWGK2793"
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "BSP",
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "zen.exe"
+            }
+          ]
+        },
+        {
+          "name": "II",
+          "layout": "BSP",
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "Zed.exe"
+            },
+            {
+              "kind": "Exe",
+              "id": "wezterm-gui.exe"
+            }
+          ]
+        },
+        {
+          "name": "III",
+          "layout": "BSP"
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "HorizontalStack",
+          "initial_workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "Discord.exe"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

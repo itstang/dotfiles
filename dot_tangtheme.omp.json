@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "#7FB4CA",
+          "options": {
+            "style": "folder"
+          },
+          "style": "plain",
+          "template": "\u256d\u2500 \uf07c <i><b>{{ .Path }}</b></i> ",
+          "type": "path"
+        },
+        {
+          "foreground": "#F141A8",
+          "options": {
+            "branch_icon": "\ue0a0 "
+          },
+          "style": "plain",
+          "template": "<#F3EFF5>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "type": "git"
+        },
+        {
+          "foreground": "#7AA89F",
+          "style": "plain",
+          "template": "{{if .Version}}<#F3EFF5>is</> \uf487 {{.Version}} {{end}}",
+          "type": "project"
+        },
+        {
+          "foreground": "#98BB6C",
+          "options": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "<#F3EFF5>via</> \ue718 {{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "foreground": "#E82424",
+          "style": "plain",
+          "template": "<#F3EFF5>and</> \ue71e {{.Full}} ",
+          "type": "npm"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "options": {
+            "time_format": "3:04:05 PM"
+          },
+          "foreground": "#E6C384",
+          "style": "plain",
+          "template": " {{ .CurrentDate | date .Format }}",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#7FB4CA",
+          "style": "plain",
+          "template": "\u2570\u2500 ",
+          "type": "text"
+        },
+        {
+          "foreground": "#E6C384",
+          "style": "plain",
+          "template": "\u276f ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 4
+}
