@@ -1,0 +1,8 @@
+{{ if ne .chezmoi.os "windows" }}
+.komorebi.json
+.tangtheme.omp.json
+.config/tacky-borders
+.config/yasb
+.config/whkdrc
+Documents/Powershell/Microsoft.PowerShell_profile.ps1
+{{ end }}
