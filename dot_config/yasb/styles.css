@@ -546,3 +546,7 @@
   background-color: #fae93f;
   font-size: 11px;
 }
+.weather-card .hourly-data .hourly-rain-animation {
+    color: rgba(150, 200, 255, 40);
+    background-color:rgba(0, 0, 0, 0);
+}
