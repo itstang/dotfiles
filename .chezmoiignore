@@ -6,3 +6,7 @@
 .config/whkdrc
 Documents/Powershell/Microsoft.PowerShell_profile.ps1
 {{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+.zshrc
+{{ end }}
