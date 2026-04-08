@@ -10,6 +10,8 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Hom
 export EDITOR='zed'
 export LC_ALL=en_US.UTF-8
 export HYPHEN_INSENSITIVE="true"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+unset LS_COLORS
 
 # ── ZGENOM / OMZ ──────────────────────────────────────────────────────────────
 skip_global_compinit=1  # prevent OMZ from calling compinit itself
@@ -27,10 +29,10 @@ if ! zgenom saved; then
   zgenom oh-my-zsh plugins/brew
   zgenom oh-my-zsh plugins/macos
   zgenom load zsh-users/zsh-completions src
-  zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load zdharma-continuum/fast-syntax-highlighting
   zgenom load zsh-users/zsh-autosuggestions
   zgenom load akash329d/zsh-alias-finder
-  zgenom load spaceship-prompt/spaceship-prompt spaceship
+  zgenom load aloxaf/fzf-tab
   zgenom save
 fi
 
@@ -43,16 +45,8 @@ else
   compinit -C
 fi
 
-# ── SPACESHIP ─────────────────────────────────────────────────────────────────
-SPACESHIP_PROMPT_ORDER=(time user dir host git package node aws battery exit_code char)
-SPACESHIP_USER_SHOW="always"
-SPACESHIP_USER_COLOR="red"
-SPACESHIP_DIR_TRUNC_REPO="true"
-SPACESHIP_DIR_COLOR="magenta"
-SPACESHIP_GOLANG_COLOR="blue"
-SPACESHIP_TIME_SHOW="true"
-
 # ── TOOLS ─────────────────────────────────────────────────────────────────────
+eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
