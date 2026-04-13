@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.os "windows" -}}
+$source = "$env:USERPROFILE\.config\nvim"
+$target = "$env:USERPROFILE\AppData\Local\nvim"
+
+if (Test-Path $target) {
+    Remove-Item $target -Recurse -Force
+}
+
+New-Item -ItemType Junction -Path $target -Target $source
+Write-Host "Linked $target -> $source"
+{{ end -}}
