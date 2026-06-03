@@ -1,7 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
+  "instructions": ["./prompts/general-guideline.md"],
   "permission": {
+    "read": {
+      "~/.ssh/**": "deny",
+      ".env*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*credentials*": "deny"
+    },
     "edit": "ask",
     "bash": {
       "*": "ask",
@@ -9,12 +17,31 @@
     },
     "skill": "allow"
   },
-  "mode": {
+  "agent": {
     "plan": {
-      "model": "opencode-go/glm-5.1"
+      "description": "Structured implementation planning",
+      "model": "opencode-go/glm-5.1",
+      "prompt": "{file:./prompts/plan-guideline.md}"
     },
     "build": {
-      "model": "opencode-go/kimi-k2.6"
+      "description": "Primary coding agent that delegates command execution to @executor",
+      "model": "opencode-go/kimi-k2.6",
+      "permission": {
+        "bash": "deny"
+      },
+      "prompt": "{file:./prompts/coding-guideline.md}"
+    },
+    "executor": {
+      "description": "Default execution subagent for bash commands, tests, builds, and validation",
+      "model": "opencode-go/deepseek-v4-flash",
+      "mode": "subagent",
+      "prompt": "{file:./prompts/executor-guideline.md}"
+    },
+    "explore": {
+      "description": "Fast code base exploration",
+      "model": "opencode-go/deepseek-v4-flash",
+      "variant": "max",
+      "prompt": "{file:./prompts/explore-guideline.md}"
     }
   }
 }

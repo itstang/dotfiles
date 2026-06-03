@@ -25,6 +25,16 @@ return {
 			git = {
 				ignore = false,
 			},
+			renderer = {
+				icons = {
+					git_placement = "after",
+					glyphs = {
+						git = {
+							untracked = "",
+						},
+					},
+				},
+			},
 		})
 
 		local keymap = vim.keymap

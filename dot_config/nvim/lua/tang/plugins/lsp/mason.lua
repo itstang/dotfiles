@@ -14,6 +14,8 @@ return {
 				"prismals",
 				"pyright",
 				"eslint",
+				"jsonls",
+				"rust_analyzer",
 			},
 		},
 		dependencies = {

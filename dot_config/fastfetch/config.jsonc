@@ -1,9 +1,9 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "logo": {
-    "source": "~\\.config\\fastfetch\\ascii.txt",
+    "source": "~/.config/fastfetch/ascii.txt",
     "padding": {
-      "top": 1,
+      "top": 0,
       "left": 4
     },
     "color": {
@@ -19,7 +19,8 @@
   "modules": [
     {
       "type": "custom",
-      "format": "\u001b[90m╭──────────────────────Hardware──────────────────────╮"
+      "format": "\u001b[37m╭──────────────────────Hardware──────────────────────╮",
+      "outputColor": "white"
     },
     {
       "type": "host",
@@ -49,15 +50,15 @@
     },
     {
       "type": "custom",
-      "format": "\u001b[90m╰────────────────────────────────────────────────────╯"
+      "format": "\u001b[37m╰────────────────────────────────────────────────────╯"
     },
     {
       "type": "custom",
-      "format": "\u001b[90m╭──────────────────────Software──────────────────────╮"
+      "format": "\u001b[37m╭──────────────────────Software──────────────────────╮"
     },
     {
       "type": "os",
-      "key": " OS",
+      "key": "󰀵 OS",
       "keyColor": "yellow"
     },
     {
@@ -88,7 +89,7 @@
     },
     {
       "type": "custom",
-      "format": "\u001b[90m╰────────────────────────────────────────────────────╯"
+      "format": "\u001b[37m╰────────────────────────────────────────────────────╯"
     },
     {
       "type": "colors",

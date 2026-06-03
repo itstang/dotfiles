@@ -11,6 +11,7 @@ export EDITOR='zed'
 export LC_ALL=en_US.UTF-8
 export HYPHEN_INSENSITIVE="true"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
+export XDG_CONFIG_HOME="$HOME/.config"
 unset LS_COLORS
 
 # ── ZGENOM / OMZ ──────────────────────────────────────────────────────────────
@@ -61,13 +62,15 @@ pyenv() {
 }
 
 # ── ALIASES ───────────────────────────────────────────────────────────────────
-alias zshconfig="zed ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias mkdir="mkdir -p"
+alias zshconfig="$EDITOR ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias git-cleanup="/Users/$USER/Develop/git-cleanup.sh"
 alias ls='eza --color=always --group-directories-first --icons'
 alias ll='eza -la --icons --octal-permissions --group-directories-first'
 alias la='eza --long --all --group --group-directories-first'
+alias lg="lazygit"
+alias nvm="fnm"
 
 # ── FUNCTIONS ─────────────────────────────────────────────────────────────────
 mkcd() { mkdir "$1" && cd "$1" }

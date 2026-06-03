@@ -3,12 +3,10 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
-config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-NoLogo' }
-config.default_cwd = 'C:\\Users\\richard\\Develop'
 config.max_fps = 244
 
 -- Fonts
-config.font = wezterm.font { family = 'MesloLGS Nerd Font' }
+config.font = wezterm.font { family = 'Fira Code' }
 config.font_rules = {
   {
     intensity = 'Bold',
@@ -37,7 +35,7 @@ config.font_rules = {
     },
   },
 }
-config.font_size = 10
+config.font_size = 12
 
 -- Cursor
 config.default_cursor_style = 'BlinkingBlock'
@@ -47,7 +45,7 @@ config.animation_fps = 30
 -- Window
 config.window_decorations = 'RESIZE'
 config.initial_cols = 120
-config.initial_rows = 28
+config.initial_rows = 36
 
 --  Colors
 config.window_background_opacity = 0.9
