@@ -1,16 +1,15 @@
 return {
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
 				"ts_ls",
 				"html",
 				"cssls",
 				"tailwindcss",
-				"svelte",
 				"lua_ls",
 				"graphql",
-				"emmet_ls",
+				"gopls",
 				"prismals",
 				"pyright",
 				"eslint",
@@ -20,7 +19,7 @@ return {
 		},
 		dependencies = {
 			{
-				"williamboman/mason.nvim",
+				"mason-org/mason.nvim",
 				opts = {
 					ui = {
 						icons = {
@@ -44,10 +43,11 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
+				"goimports",
 			},
 		},
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 		},
 	},
 }

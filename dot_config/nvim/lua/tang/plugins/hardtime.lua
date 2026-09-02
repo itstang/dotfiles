@@ -4,8 +4,4 @@ return {
 	opts = {
 		timeout = 1500,
 	},
-	config = function()
-		vim.notify = require("notify")
-		require("hardtime").setup()
-	end,
 }

@@ -1,33 +1,16 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
-	event = { "bufReadPre", "BufNewFile" },
+	branch = "main",
+	lazy = false,
 	build = ":TSUpdate",
 	config = function()
-		local treesitter = require("nvim-treesitter")
-
-		treesitter.setup({
-			highlight = { enable = true },
-			indent = { enable = true },
-			ensure_installed = {
-				"json",
-				"go",
-				"rust",
-				"javascript",
-				"typescript",
-				"tsx",
-				"yaml",
-				"html",
-				"css",
-				"markdown",
-				"markdown_inline",
-				"lua",
-				"vim",
-				"dockerfile",
-				"gitignore",
-				"vimdoc",
-				"c",
-			},
+		local group = vim.api.nvim_create_augroup("treesitter-start", { clear = true })
+		vim.api.nvim_create_autocmd("FileType", {
+			group = group,
+			pattern = "*",
+			callback = function(args)
+				pcall(vim.treesitter.start, args.buf)
+			end,
 		})
 	end,
 }
