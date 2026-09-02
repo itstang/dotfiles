@@ -15,6 +15,7 @@ return {
 			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
 			"                                                     ",
 		}
+		dashboard.section.header.opts.hl = "SpecialKey"
 
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
