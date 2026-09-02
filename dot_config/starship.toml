@@ -4,8 +4,8 @@ add_newline = false
 
 format = """
 [\u256d\u2500 ](fg:blue)\
-$hostname\
 $username\
+$hostname\
 $directory\
 $golang\
 $nodejs\
