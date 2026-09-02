@@ -1,7 +1,7 @@
 watch_stylesheet: true
 watch_config: true
 debug: false
-update_check: true
+update_check: false
 komorebi:
   start_command: "komorebic start --whkd"
   stop_command: "komorebic stop --whkd"
@@ -44,7 +44,7 @@ bars:
         - "clock"
       right:
         - "systray"
-        - "media"
+        # - "media"
         - "grouped_widgets"
         - "language"
         - "volume"
@@ -307,8 +307,8 @@ widgets:
         cloudyNight: "\ue311"
         rainyDay: "\ue308"
         rainyNight: "\ue333"
-        snowyIcyDay: "\ue30a"
-        snowyIcyNight: "\ue335"
+        # snowyIcyDay: "\ue30a"
+        # snowyIcyNight: "\ue335"
         blizzardDay: "\udb83\udf36"
         blizzardNight: "\udb83\udf36"
         foggyDay: "\ue303"

@@ -16,7 +16,7 @@
     }
   },
   "animation": {
-    "enabled": true,
+    "enabled": false,
     "duration": 150,
     "fps": 60,
     "style": "EaseOutSine"
@@ -38,7 +38,18 @@
     },
     {
       "kind": "Title",
-      "id": "Jingle v1.3.0"
+      "id": "Jingle",
+      "matching_strategy": "StartsWith"
+    },
+    {
+      "kind": "Title",
+      "id": "Minecraft",
+      "matching_strategy": "Contains"
+    },
+    {
+      "kind": "Title",
+      "id": "Sticky",
+      "matching_strategy": "Contains"
     }
   ],
   "display_index_preferences": {

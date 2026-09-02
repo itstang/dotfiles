@@ -2,12 +2,21 @@ $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 $env:BAT_CONFIG_PATH = "$env:USERPROFILE\.config\bat\config"
 $env:FZF_CTRL_T_OPTS = '--preview "bat --color=always --line-range=:500 {}"'
 $env:GOPATH = "$env:USERPROFILE\go"
+$env:PATH += ";C:\msys64\mingw64\bin"
 
 New-Alias -Name gst -Value Get-GitStatus
 Set-Alias -Name ls -Value eza
 New-Alias -Name ll -Value invoke-eza-all
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name y -Value yazi
+
+Set-PSReadLineKeyHandler -Key "Ctrl+u" -Function BackwardDeleteLine
+Set-PSReadLineKeyHandler -Key "Ctrl+k" -Function ForwardDeleteLine
+
+function lms
+{
+  llama-server -hf unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL --alias "unsloth/Qwen3.5" --temp 0.6 --top-p 0.95 --ctx-size 16384 --top-k 20 --min-p 0.00 --port 8001 --chat-template-kwargs '{"enable_thinking":false}'
+}
 
 function Get-GitStatus
 {
@@ -92,3 +101,6 @@ fastfetch
 
 # Initiate zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+# Initialize fnm (Fast Node Manager) for PowerShell
+fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
