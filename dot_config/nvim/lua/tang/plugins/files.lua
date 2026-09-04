@@ -2,6 +2,9 @@ return {
 	"nvim-mini/mini.files",
 	version = false,
 	opts = {
+		mappings = {
+			go_in_plus = "<CR>",
+		},
 		options = {
 			use_as_default_explorer = false,
 		},
@@ -14,8 +17,10 @@ return {
 		{
 			"<leader>em",
 			function()
-				if not require("mini.files").close() then
-					require("mini.files").open(vim.api.nvim_buf_get_name(0))
+				local MiniFiles = require("mini.files")
+				if not MiniFiles.close() then
+					MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+					MiniFiles.reveal_cwd()
 				end
 			end,
 			desc = "Toggle file explorer",
