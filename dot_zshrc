@@ -54,10 +54,23 @@ ZGEN_AUTOLOAD_COMPINIT=0
 # Set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS="
     --style full
-    --preview 'fzf-preview.sh {}'
-    --height 40%"
+    --layout reverse
+    --height 40%
+    --color 'bg+:#252525'
+    --color 'hl:#ea83a5,hl+:#ea83a5'
+    --color 'info:#e6b99d'
+    --color 'marker:#ea83a5'
+    --color 'pointer:#ea83a5'
+    --color 'border:#aca1cf'
+"
 export FZF_CTRL_R_OPTS="
-    --preview 'echo {2..}'"
+    --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+    --color 'header:italic,header:#ffffff'
+    --header 'Press CTRL-Y to copy command into clipboard'
+"
+export FZF_CTRL_T_OPTS="
+    --preview 'fzf-preview.sh {}'
+"
 source <(fzf --zsh)
 
 source "${HOME}/.zgenom/zgenom.zsh"
@@ -88,6 +101,8 @@ pyenv() {
 }
 
 # ── ALIASES ───────────────────────────────────────────────────────────────────
+alias vi="nvim"
+
 alias mkdir="mkdir -p"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias szsh="exec zsh"
@@ -105,9 +120,15 @@ alias gcb='git checkout -b'
 alias glg='git log --stat'
 alias gb='git branch'
 alias gr='git remote'
+alias grf='git reflog'
 alias gsta='git stash push'
 alias gstaa='git stash apply'
 alias gsts='git stash show --text'
+
+alias bi='brew install'
+alias bcin='brew install -cask'
+alias bu='brew update'
+alias bup='brew upgrade'
 
 git_main_branch() {
   local b
@@ -142,3 +163,7 @@ git-delete-squashed() {
     fi
   done
 }
+
+. "$HOME/.local/bin/env"
+
+eval "$(/Users/tang/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
