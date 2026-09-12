@@ -23,5 +23,6 @@ return {
 		{ "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
 		{ "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git log" },
 		{ "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+		{ "<leader>gf", function() Snacks.picker.git_files() end, desc = "Git Files" },
 	},
 }

@@ -1,6 +1,7 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
+		init = function() vim.lsp.inlay_hint.enable(true) end,
 		opts = {
 			ensure_installed = {
 				"ts_ls",
@@ -10,11 +11,11 @@ return {
 				"lua_ls",
 				"graphql",
 				"gopls",
-				"prismals",
-				"pyright",
-				"eslint",
+				"ty",
+				"oxlint",
 				"jsonls",
 				"rust_analyzer",
+				"zls",
 			},
 		},
 		dependencies = {
@@ -37,12 +38,9 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
-				"prettier", -- prettier formatter
+				"oxfmt",
 				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint",
-				"eslint_d",
+				"ruff",
 				"goimports",
 			},
 		},

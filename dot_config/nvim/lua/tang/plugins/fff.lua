@@ -24,35 +24,31 @@ return {
 		git = {
 			status_text_color = true,
 		},
+		hl = {
+			border = "Keyword",
+			title = "Keyword",
+		},
 	},
 	lazy = false, -- the plugin lazy-initialises itself
 	keys = {
 		{
-			"ff",
-			function()
-				require("fff").find_files()
-			end,
+			"<leader>ff",
+			function() require("fff").find_files() end,
 			desc = "FFFind files",
 		},
 		{
-			"fg",
-			function()
-				require("fff").live_grep()
-			end,
+			"<leader>fg",
+			function() require("fff").live_grep() end,
 			desc = "LiFFFe grep",
 		},
 		{
-			"fz",
-			function()
-				require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } })
-			end,
+			"<leader>fz",
+			function() require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } }) end,
 			desc = "Live fffuzy grep",
 		},
 		{
-			"fc",
-			function()
-				require("fff").live_grep({ query = vim.fn.expand("<cword>") })
-			end,
+			"<leader>fc",
+			function() require("fff").live_grep({ query = vim.fn.expand("<cword>") }) end,
 			desc = "Search current word",
 		},
 	},

@@ -15,11 +15,11 @@ return {
 			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
 			"                                                     ",
 		}
-		dashboard.section.header.opts.hl = "SpecialKey"
+		dashboard.section.header.opts.hl = "Keyword"
 
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-			dashboard.button("ff", "  > Find files", "<cmd>lua require('fff').find_files()<CR>"),
+			dashboard.button("SPC ff", "  > Find files", "<cmd>lua require('fff').find_files()<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
 			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>AutoSession restore<CR>"),
 			dashboard.button("SPC nt", "  > Toggle terminal", "<cmd>ToggleTerm<CR>"),
