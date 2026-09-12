@@ -33,3 +33,5 @@ opt.splitbelow = true
 vim.o.winbar = " "
 
 opt.undofile = true
+
+require("vim._core.ui2").enable({})
