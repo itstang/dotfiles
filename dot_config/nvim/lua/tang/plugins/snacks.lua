@@ -1,5 +1,7 @@
 return {
 	"folke/snacks.nvim",
+	priority = 1000,
+	lazy = false,
 	opts = {
 		input = {
 			enabled = true,
@@ -11,6 +13,10 @@ return {
 					keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } },
 				},
 			},
+		},
+		notifier = {
+			enabled = true,
+			top_down = false,
 		},
 	},
 	keys = {

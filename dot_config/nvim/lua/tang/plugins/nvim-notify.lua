@@ -1,5 +1,6 @@
 return {
 	"rcarriga/nvim-notify",
+	enabled = false,
 	opts = {
 		render = "default",
 		top_down = false,
@@ -8,8 +9,6 @@ return {
 		local notify = require("notify")
 		notify.setup(opts)
 
-		vim.notify = function(msg, level, notify_opts)
-			return notify(msg, level, notify_opts)
-		end
+		vim.notify = function(msg, level, notify_opts) return notify(msg, level, notify_opts) end
 	end,
 }

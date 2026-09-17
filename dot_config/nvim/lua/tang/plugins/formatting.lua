@@ -6,20 +6,20 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
+				javascript = { "oxfmt" },
+				typescript = { "oxfmt" },
+				javascriptreact = { "oxfmt" },
+				typescriptreact = { "oxfmt" },
 				css = { "prettier" },
 				html = { "prettier" },
-				json = { "prettier" },
+				json = { "oxfmt" },
 				go = { "goimports" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				python = { "ruff_organize_imports", "ruff_format" },
 				rust = { "rustfmt" },
 			},
 			format_on_save = {

@@ -1,7 +1,6 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
-		init = function() vim.lsp.inlay_hint.enable(true) end,
 		opts = {
 			ensure_installed = {
 				"ts_ls",

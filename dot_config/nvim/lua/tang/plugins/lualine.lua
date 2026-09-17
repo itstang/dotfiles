@@ -13,9 +13,11 @@ return {
 			end,
 		})
 
+		local custom_theme = require("lualine.themes.oldworld")
+		custom_theme.insert.a.bg = "#a277ff"
 		lualine.setup({
 			options = {
-				theme = "horizon",
+				theme = custom_theme,
 				section_separators = { left = "", right = "" },
 				component_separators = "",
 			},
@@ -27,14 +29,14 @@ return {
 					{
 						function() return "󰑊 recording @" .. rec end,
 						cond = function() return rec ~= nil end,
-						color = { fg = "#ff9e64" },
+						color = { fg = "#f5a191" },
 					},
 				},
 				lualine_x = {
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
-						color = { fg = "#ff9e64" },
+						color = { fg = "#f5a191" },
 					},
 					{ "encoding" },
 					{ "fileformat" },

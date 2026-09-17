@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		vim.lsp.inlay_hint.enable(true, {
+			bufnr = args.buf,
+		})
+	end,
+})
