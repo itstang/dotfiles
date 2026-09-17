@@ -1,13 +1,14 @@
 font-family = Maple Mono NF
-font-style-italic = VictorMono Nerd Font
-font-feature = +feat
+font-family-italic = Maple Mono NF
+# font-style-italic = Italic
+font-feature = +calt, +cv01, +cv02, +cv03, +cv65, +cv66, +ss03, +ss05, +ss11
 
 theme = Catppuccin Mocha
 background-opacity = 0.8
 background-blur = 10
 unfocused-split-opacity = 0.3
-macos-titlebar-proxy-icon = hidden
-title = " "
+# macos-titlebar-proxy-icon = hidden
+# title = " "
 
 cursor-style = block
 cursor-style-blink = true
