@@ -6,6 +6,7 @@ return {
 	end,
 	opts = {
 		prompt = " ",
+		title = "Files",
 		keymaps = {
 			move_up = { "<Up>", "<C-k>" },
 			move_down = { "<Down>", "<C-j>" },
@@ -34,17 +35,17 @@ return {
 		{
 			"<leader>ff",
 			function() require("fff").find_files() end,
-			desc = "FFFind files",
+			desc = "Find files",
 		},
 		{
 			"<leader>fg",
 			function() require("fff").live_grep() end,
-			desc = "LiFFFe grep",
+			desc = "Live grep",
 		},
 		{
 			"<leader>fz",
 			function() require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } }) end,
-			desc = "Live fffuzy grep",
+			desc = "Fuzzy grep",
 		},
 		{
 			"<leader>fc",

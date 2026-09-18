@@ -11,6 +11,13 @@ return {
 		event = "VeryLazy",
 		opts = {
 			startVisible = true,
+			showBlankVirtLine = false,
+			targetedMotionHints = {
+				enabled = false,
+			},
+			hints = {
+				Zero = { prio = 0 },
+			},
 		},
 		keys = {
 			{
