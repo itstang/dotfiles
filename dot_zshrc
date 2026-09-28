@@ -18,7 +18,7 @@ unset LS_COLORS
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
-setopt extended_history hist_expire_dups_first hist_ignore_dups \
+setopt extended_history hist_ignore_all_dups hist_save_no_dups \
        hist_ignore_space hist_verify share_history
 
 # ── COMPLETION SEARCH PATH ────────────────────────────────────────────────────
@@ -33,6 +33,7 @@ autoload -Uz compinit
 _zstale=( ~/.zcompdump(N.mh+24) )
 if (( $#_zstale )) || [[ ! -s ~/.zcompdump ]]; then
   compinit
+  touch ~/.zcompdump
 else
   compinit -C
 fi
@@ -90,18 +91,8 @@ eval "$(starship init zsh --print-full-init)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-path=("$PYENV_ROOT/shims" "$PYENV_ROOT/bin" $path)
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-pyenv() {
-  unfunction pyenv
-  eval "$(command pyenv init -)"
-  pyenv "$@"
-}
-
 # ── ALIASES ───────────────────────────────────────────────────────────────────
-alias vi="nvim"
+alias vim="nvim"
 
 alias mkdir="mkdir -p"
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -126,7 +117,7 @@ alias gstaa='git stash apply'
 alias gsts='git stash show --text'
 
 alias bi='brew install'
-alias bcin='brew install -cask'
+alias bcin='brew install --cask'
 alias bu='brew update'
 alias bup='brew upgrade'
 
@@ -165,5 +156,4 @@ git-delete-squashed() {
 }
 
 . "$HOME/.local/bin/env"
-
-eval "$(/Users/tang/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+eval "$(mise activate zsh)" # added by https://mise.run/zsh
