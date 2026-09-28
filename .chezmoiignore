@@ -11,4 +11,5 @@ Documents/*
 .zshrc
 .zshenv
 .config/zsh
+.local/share/antidote
 {{ end }}

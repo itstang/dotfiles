@@ -20,16 +20,8 @@ export FZF_CTRL_T_OPTS="
 # must come before fzf-tab so fzf-tab's Tab binding wins
 source <(fzf --zsh)
 
-ZGEN_DIR=$XDG_DATA_HOME/zgenom
-ZGEN_AUTOLOAD_COMPINIT=0
-source $ZGEN_DIR/zgenom.zsh
-zgenom autoupdate
-
-if ! zgenom saved; then
-  zgenom load aloxaf/fzf-tab
-  zgenom load zdharma-continuum/fast-syntax-highlighting
-  zgenom load zsh-users/zsh-autosuggestions
-  zgenom load akash329d/zsh-alias-finder
-  zgenom save
-  zgenom compile $ZDOTDIR
-fi
+ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
+zstyle ':antidote:static' file $XDG_CACHE_HOME/zsh/plugins.zsh
+zstyle ':antidote:*' zcompile 'yes'
+source $XDG_DATA_HOME/antidote/antidote.zsh
+antidote load
