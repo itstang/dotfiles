@@ -1,0 +1,5 @@
+export EDITOR='nvim'
+export LC_ALL=en_US.UTF-8
+export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+unset LS_COLORS

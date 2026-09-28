@@ -1,0 +1,6 @@
+source $ZDOTDIR/modules/options.zsh
+source $ZDOTDIR/modules/completion.zsh
+source $ZDOTDIR/modules/plugins.zsh
+source $ZDOTDIR/modules/aliases.zsh
+source $ZDOTDIR/modules/functions.zsh
+source $ZDOTDIR/modules/tools.zsh
