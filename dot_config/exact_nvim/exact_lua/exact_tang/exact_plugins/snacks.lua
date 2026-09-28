@@ -18,6 +18,39 @@ return {
 					keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } },
 				},
 			},
+			layout = { preset = "chad" },
+			layouts = {
+				chad = {
+					reverse = true,
+					layout = {
+						box = "horizontal",
+						backdrop = false,
+						width = 0.8,
+						height = 0.8,
+						{
+							box = "vertical",
+							{
+								win = "list",
+								title = "{title} {live} {flags}",
+								title_pos = "left",
+								border = "solid",
+							},
+							{
+								win = "input",
+								height = 1,
+								border = "solid",
+							},
+						},
+						{
+							win = "preview",
+							title = "{preview}",
+							title_pos = "left",
+							border = "solid",
+							width = 0.5,
+						},
+					},
+				},
+			},
 		},
 		notifier = {
 			enabled = true,
@@ -48,7 +81,7 @@ return {
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		{ "<leader>fh", function() Snacks.picker.help() end, desc = "Help pages" },
 		{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent files" },
-		{ "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagonistics" },
+		{ "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
 		{ "<leader>fm", function() Snacks.picker.marks() end, desc = "Marks" },
 
 		-- Git

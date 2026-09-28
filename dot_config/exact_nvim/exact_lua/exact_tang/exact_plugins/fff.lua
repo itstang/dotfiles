@@ -12,22 +12,29 @@ return {
 			move_down = { "<Down>", "<C-j>" },
 		},
 		debug = {
-			enabled = true,
+			enabled = false,
 			show_scores = false,
 			show_file_info = {
 				score_breakdown = false,
 			},
 		},
 		layout = {
-			prompt_position = "top",
+			prompt_position = "bottom",
 			border = "rounded",
 		},
 		git = {
 			status_text_color = true,
 		},
 		hl = {
-			border = "Keyword",
-			title = "Keyword",
+			title = "FFFTitle",
+			prompt = "FFFPromptPrefix",
+			matched = "FFFMatching",
+			winhl = {
+				prompt = "Normal:FFFPrompt,FloatBorder:FFFPromptBorder",
+				list = "Normal:NormalFloat,FloatBorder:FFFBorder,FloatTitle:FFFTitle",
+				preview = "Normal:NormalFloat,FloatBorder:FFFBorder,FloatTitle:FFFPreviewTitle",
+				file_info = "Normal:NormalFloat,FloatBorder:FFFBorder,FloatTitle:FFFPreviewTitle",
+			},
 		},
 	},
 	lazy = false, -- the plugin lazy-initialises itself
@@ -49,8 +56,9 @@ return {
 		},
 		{
 			"<leader>fc",
-			function() require("fff").live_grep({ query = vim.fn.expand("<cword>") }) end,
-			desc = "Search current word",
+			function() require("fff").live_grep_under_cursor() end,
+			mode = { "n", "x" },
+			desc = "Search current word or selection",
 		},
 	},
 }
