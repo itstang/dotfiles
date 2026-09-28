@@ -1,4 +1,5 @@
-vim.cmd("let g:netrw_liststyle = 3")
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
 
@@ -31,7 +32,9 @@ opt.splitright = true
 opt.splitbelow = true
 
 vim.o.winbar = " "
+vim.o.winborder = "rounded"
 
 opt.undofile = true
+opt.swapfile = false
 
 require("vim._core.ui2").enable({})

@@ -1,6 +1,7 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			ensure_installed = {
 				"ts_ls",
@@ -20,6 +21,7 @@ return {
 		dependencies = {
 			{
 				"mason-org/mason.nvim",
+				cmd = "Mason",
 				opts = {
 					ui = {
 						icons = {
@@ -35,12 +37,14 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			ensure_installed = {
 				"oxfmt",
 				"stylua", -- lua formatter
 				"ruff",
 				"goimports",
+				"prettier",
 			},
 		},
 		dependencies = {

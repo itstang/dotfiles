@@ -13,6 +13,8 @@ return {
 		local function try_linting()
 			local linters = lint.linters_by_ft[vim.bo.filetype]
 
+			if not linters or #linters == 0 then return end
+
 			lint.try_lint(linters)
 		end
 

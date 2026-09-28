@@ -3,6 +3,7 @@ return {
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
+		event = "InsertEnter",
 		opts = {
 			snippets = { preset = "default" },
 			sources = {
@@ -61,6 +62,7 @@ return {
 	},
 	{
 		"xzbdmw/colorful-menu.nvim",
+		lazy = true,
 		opts = {},
 	},
 	{

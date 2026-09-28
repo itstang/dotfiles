@@ -1,16 +1,33 @@
 return {
 	{
-		"karb94/neoscroll.nvim",
-		opts = {
-			duration_multiplier = 0.25,
-		},
+		"nvim-mini/mini.animate",
+		version = false,
+		event = "VeryLazy",
+		opts = function()
+			local animate = require("mini.animate")
+
+			return {
+				cursor = {
+					enable = false,
+				},
+				scroll = {
+					enable = true,
+					timing = animate.gen_timing.cubic({
+						duration = 150,
+						unit = "total",
+					}),
+				},
+			}
+		end,
 	},
 	{
 		"sphamba/smear-cursor.nvim",
+		event = "VeryLazy",
 		opts = {},
 	},
 	{
 		"sitiom/nvim-numbertoggle",
+		event = "VeryLazy",
 	},
 	{
 		"szw/vim-maximizer",
@@ -20,6 +37,7 @@ return {
 	},
 	{
 		"brenoprata10/nvim-highlight-colors",
-		config = function() require("nvim-highlight-colors").setup({}) end,
+		event = "VeryLazy",
+		opts = {},
 	},
 }

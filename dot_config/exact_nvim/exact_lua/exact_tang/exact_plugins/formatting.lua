@@ -10,31 +10,34 @@ return {
 				typescript = { "oxfmt" },
 				javascriptreact = { "oxfmt" },
 				typescriptreact = { "oxfmt" },
-				css = { "prettier" },
-				html = { "prettier" },
+				css = { "oxfmt" },
+				html = { "oxfmt" },
 				json = { "oxfmt" },
 				go = { "goimports" },
-				yaml = { "prettier" },
-				markdown = { "prettier" },
-				graphql = { "prettier" },
-				liquid = { "prettier" },
+				yaml = { "oxfmt" },
+				markdown = { "oxfmt" },
+				graphql = { "oxfmt" },
 				lua = { "stylua" },
 				python = { "ruff_organize_imports", "ruff_format" },
 				rust = { "rustfmt" },
 			},
 			format_on_save = {
 				lsp_format = "fallback",
-				async = false,
-				timeout_ms = 3000,
+				timeout_ms = 500,
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			conform.format({
-				lsp_format = "fallback",
-				async = false,
-				timeout_ms = 1000,
-			})
-		end, { desc = "Format file or range (in visual mode)" })
+		vim.keymap.set(
+			{ "n", "v" },
+			"<leader>mp",
+			function()
+				conform.format({
+					lsp_format = "fallback",
+					async = false,
+					timeout_ms = 500,
+				})
+			end,
+			{ desc = "Format file or range (in visual mode)" }
+		)
 	end,
 }

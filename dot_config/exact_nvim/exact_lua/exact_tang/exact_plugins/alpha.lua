@@ -20,7 +20,7 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
 			dashboard.button("SPC ff", "  > Find files", "<cmd>lua require('fff').find_files()<CR>"),
-			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+			dashboard.button("SPC ef", "  > Toggle file explorer", "<cmd>lua require('mini.files').open()<CR>"),
 			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>AutoSession restore<CR>"),
 			dashboard.button("SPC nt", "  > Toggle terminal", "<cmd>ToggleTerm<CR>"),
 			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),

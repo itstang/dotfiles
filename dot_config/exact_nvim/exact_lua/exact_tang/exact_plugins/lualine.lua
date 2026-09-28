@@ -1,34 +1,37 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	event = "VeryLazy",
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status")
-
+		require("mini.icons").mock_nvim_web_devicons()
 		vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
 			group = vim.api.nvim_create_augroup("macro_status", {}),
-			callback = function(ev)
-				rec = ev.event == "RecordingEnter" and vim.fn.reg_recording() or nil
-				lualine.refresh({ place = { "statusline" } })
-			end,
+			callback = function() lualine.refresh({ place = { "statusline" } }) end,
 		})
 
-		local custom_theme = require("lualine.themes.oldworld")
-		custom_theme.insert.a.bg = "#a277ff"
 		lualine.setup({
 			options = {
-				theme = custom_theme,
+				theme = "auto",
 				section_separators = { left = "", right = "" },
 				component_separators = "",
+				disabled_filetypes = { statusline = { "alpha" } },
 			},
 			sections = {
 				lualine_a = {
-					{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
+					{
+						"mode",
+						separator = { left = "", right = "" },
+						right_padding = 2,
+						color = function()
+							if vim.fn.mode():sub(1, 1) == "i" then return { bg = "#a277ff" } end
+						end,
+					},
 				},
 				lualine_b = {
 					{
-						function() return "󰑊 recording @" .. rec end,
-						cond = function() return rec ~= nil end,
+						function() return "󰑊 recording @" .. vim.fn.reg_recording() end,
+						cond = function() return vim.fn.reg_recording() ~= "" end,
 						color = { fg = "#f5a191" },
 					},
 				},

@@ -12,9 +12,13 @@ return {
 	},
 	{
 		"rachartier/tiny-cmdline.nvim",
+		event = "VeryLazy",
+		init = function() vim.o.cmdheight = 0 end,
 		config = function()
-			vim.o.cmdheight = 0
-			require("tiny-cmdline").setup()
+			---@diagnostic disable-next-line: missing-fields
+			require("tiny-cmdline").setup({
+				on_reposition = require("tiny-cmdline").adapters.blink,
+			})
 		end,
 	},
 }
