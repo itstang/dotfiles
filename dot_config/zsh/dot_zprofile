@@ -1,6 +1,7 @@
 typeset -U path PATH
 path=(
   "$XDG_DATA_HOME/mise/shims"
+  "$HOME/.local/bin"
   /opt/homebrew/bin
   "$HOME/bin"
   "$HOME/.cargo/bin"
@@ -8,4 +9,3 @@ path=(
   $path
 )
 
-. "$HOME/.local/bin/env"
