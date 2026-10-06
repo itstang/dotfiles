@@ -85,6 +85,11 @@ return {
 		},
 	},
 	{
+		"nvim-mini/mini.splitjoin",
+		version = false,
+		opts = {},
+	},
+	{
 		"nvim-mini/mini.icons",
 		version = false,
 		lazy = true,
