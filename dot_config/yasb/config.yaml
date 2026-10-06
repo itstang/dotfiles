@@ -32,9 +32,9 @@ bars:
       height: 32
     padding:
       top: 0
-      left: 0
+      left: 6
       bottom: 0
-      right: 0
+      right: 6
     widgets:
       left:
         - "home"

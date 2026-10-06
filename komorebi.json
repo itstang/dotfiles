@@ -62,12 +62,7 @@
         {
           "name": "I",
           "layout": "BSP",
-          "initial_workspace_rules": [
-            {
-              "kind": "Exe",
-              "id": "zen.exe"
-            }
-          ]
+          "initial_workspace_rules": []
         },
         {
           "name": "II",
