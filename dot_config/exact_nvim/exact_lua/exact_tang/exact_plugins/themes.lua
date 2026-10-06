@@ -73,6 +73,7 @@ return {
 					booleans = { italic = true, bold = true },
 				},
 				highlight_overrides = {
+					CursorLineNr = { fg = ultraviolet, bold = true },
 					Keyword = { fg = ultraviolet, italic = true },
 					Constant = { fg = p.purple },
 					Identifier = { fg = p.blue },

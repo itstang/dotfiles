@@ -29,11 +29,15 @@ return {
 					},
 				},
 				lualine_b = {
+					{ "branch", icon = "" },
 					{
 						function() return "󰑊 recording @" .. vim.fn.reg_recording() end,
 						cond = function() return vim.fn.reg_recording() ~= "" end,
 						color = { fg = "#f5a191" },
 					},
+				},
+				lualine_c = {
+					{ "filename", path = 1 },
 				},
 				lualine_x = {
 					{
@@ -41,9 +45,11 @@ return {
 						cond = lazy_status.has_updates,
 						color = { fg = "#f5a191" },
 					},
-					{ "encoding" },
 					{ "fileformat" },
 					{ "filetype" },
+				},
+				lualine_y = {
+					{ "diagnostics" },
 				},
 				lualine_z = {
 					{ "location", separator = { right = "" }, left_padding = 2 },

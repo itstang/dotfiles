@@ -3,7 +3,7 @@ return {
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		opts = {
 			snippets = { preset = "default" },
 			sources = {
@@ -22,7 +22,7 @@ return {
 			keymap = {
 				["<C-k>"] = { "select_prev", "fallback" },
 				["<C-j>"] = { "select_next", "fallback" },
-				["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-S-Space>"] = { "show", "show_documentation", "hide_documentation" },
 				["<CR>"] = { "accept", "fallback" },
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
@@ -56,6 +56,16 @@ return {
 				enabled = true,
 				window = {
 					border = "rounded",
+				},
+			},
+			cmdline = {
+				enabled = true,
+				completion = {
+					list = { selection = { preselect = false } },
+					menu = {
+						auto_show = function() return vim.fn.getcmdtype() == ":" end,
+					},
+					ghost_text = { enabled = true },
 				},
 			},
 		},

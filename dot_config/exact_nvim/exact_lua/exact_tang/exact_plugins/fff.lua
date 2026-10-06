@@ -22,6 +22,9 @@ return {
 			prompt_position = "bottom",
 			border = "rounded",
 		},
+		preview = {
+			line_numbers = true,
+		},
 		git = {
 			status_text_color = true,
 		},
