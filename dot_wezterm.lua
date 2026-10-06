@@ -1,76 +1,116 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
+local is_windows = wezterm.target_triple:find("windows") ~= nil
+
+if is_windows then
+	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" }
+end
+
 config.max_fps = 244
 
 -- Fonts
-config.font = wezterm.font { family = 'Fira Code' }
+config.font = wezterm.font({ family = "Maple Mono NF" })
 config.font_rules = {
-  {
-    intensity = 'Bold',
-    italic = true,
-    font = wezterm.font {
-      family = 'VictorMono Nerd Font Mono',
-      weight = 'Bold',
-      style = 'Italic',
-    },
-  },
-  {
-    italic = true,
-    intensity = 'Half',
-    font = wezterm.font {
-      family = 'VictorMono Nerd Font Mono',
-      weight = 'DemiBold',
-      style = 'Italic',
-    },
-  },
-  {
-    italic = true,
-    intensity = 'Normal',
-    font = wezterm.font {
-      family = 'VictorMono Nerd Font Mono',
-      style = 'Italic',
-    },
-  },
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "Maple Mono NF",
+			weight = "Bold",
+			style = "Italic",
+		}),
+	},
+	{
+		italic = true,
+		intensity = "Half",
+		font = wezterm.font({
+			family = "Maple Mono NF",
+			weight = "DemiBold",
+			style = "Italic",
+		}),
+	},
+	{
+		italic = true,
+		intensity = "Normal",
+		font = wezterm.font({
+			family = "Maple Mono NF",
+			style = "Italic",
+		}),
+	},
 }
-config.font_size = 12
+config.font_size = 10
 
 -- Cursor
-config.default_cursor_style = 'BlinkingBlock'
+-- config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 config.animation_fps = 30
 
 -- Window
-config.window_decorations = 'RESIZE'
+config.window_decorations = "RESIZE"
 config.initial_cols = 120
-config.initial_rows = 36
+config.initial_rows = 28
 
 --  Colors
 config.window_background_opacity = 0.9
-config.win32_system_backdrop = 'Acrylic'
-config.color_scheme = 'catppuccin-mocha'
+config.win32_system_backdrop = "Acrylic"
+-- config.color_scheme = "catppuccin-mocha"
+-- config.colors = {
+-- 	background = "#231e35",
+-- }
 config.colors = {
-  background = '#231e35'
+	foreground = "#dedce1",
+	background = "#100b15",
+	cursor_bg = "#6f78ff",
+	ansi = {
+		"#777b9a",
+		"#ff6fae",
+		"#5ec68c",
+		"#f8e1b1",
+		"#a0c0f5",
+		"#6f78ff",
+		"#85e2fa",
+		"#dedce1",
+	},
+	brights = {
+		"#8b91ab",
+		"#ffb3d3",
+		"#95d9b4",
+		"#fcf3e0",
+		"#c6d9f9",
+		"#9398ff",
+		"#a7ebfc",
+		"#f2f1f3",
+	},
 }
 
 config.inactive_pane_hsb = {
-  saturation = 0.25,
-  brightness = 0.5
+	saturation = 0.25,
+	brightness = 0.5,
 }
 
 -- Keybinds
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-  { key = '-',  mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = "\\", mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'x',  mods = 'LEADER', action = act.CloseCurrentPane { confirm = true } },
-  { key = 'z',  mods = 'LEADER', action = act.TogglePaneZoomState },
-  { key = 'n',  mods = 'LEADER', action = act.SpawnTab('CurrentPaneDomain') },
-  { key = '[',  mods = 'LEADER', action = act.ActivateTabRelative(-1) },
-  { key = ']',  mods = 'LEADER', action = act.ActivateTabRelative(1) },
-  { key = 't',  mods = 'LEADER', action = act.ShowTabNavigator },
+	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
+	{ key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+	{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+	{ key = "t", mods = "LEADER", action = act.ShowTabNavigator },
+	{
+		key = " ",
+		mods = "CTRL",
+		action = act.SendString("\x1b[32;5u"),
+		-- action = act.SendKey({
+		-- 	key = " ",
+		-- 	mods = "CTRL",
+		-- }),
+	},
 }
 
 -- Tabs
@@ -80,54 +120,54 @@ config.tab_max_width = 40
 
 -- Tabline
 tabline.setup({
-  options = {
-    icons_enabled = true,
-    theme = 'catppuccin-mocha',
-    tabs_enabled = true,
-    theme_overrides = {
-      normal_mode = {
-        a = { bg = '#89b4fa' },
-        b = { fg = '#bac2de', bg = '#232128' },
-        c = { bg = '#333333' }
-      },
-      tab = {
-        active = { fg = '#090618', bg = '#89b4fa' },
-        inactive = { bg = '#333333' }
-      }
-    },
-    section_separators = {
-      left = wezterm.nerdfonts.ple_right_half_circle_thick,
-      right = wezterm.nerdfonts.ple_left_half_circle_thick,
-    },
-    component_separators = {
-      left = wezterm.nerdfonts.ple_right_half_circle_thin,
-      right = wezterm.nerdfonts.ple_left_half_circle_thin,
-    },
-    tab_separators = {
-      left = wezterm.nerdfonts.ple_right_half_circle_thick,
-      right = wezterm.nerdfonts.ple_left_half_circle_thick,
-    },
-  },
-  sections = {
-    tabline_a = { 'mode' },
-    tabline_b = { 'workspace' },
-    tabline_c = { ' ' },
-    tab_active = {
-      { Attribute = { Intensity = 'Bold' } },
-      wezterm.nerdfonts.fa_folder_open,
-      'index',
-      { Attribute = { Italic = true } },
-      { 'parent',                          padding = 0 },
-      '/',
-      { 'cwd',    padding = { left = 0, right = 1 } },
-      { 'zoomed', padding = 0 },
-    },
-    tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
-    tabline_x = { 'ram', 'cpu' },
-    tabline_y = { 'datetime' },
-    tabline_z = { 'domain' },
-  },
-  extensions = {},
+	options = {
+		icons_enabled = true,
+		theme = "catppuccin-mocha",
+		tabs_enabled = true,
+		theme_overrides = {
+			normal_mode = {
+				a = { bg = "#89b4fa" },
+				b = { fg = "#bac2de", bg = "#232128" },
+				c = { bg = "#333333" },
+			},
+			tab = {
+				active = { fg = "#090618", bg = "#89b4fa" },
+				inactive = { bg = "#333333" },
+			},
+		},
+		section_separators = {
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.ple_right_half_circle_thin,
+			right = wezterm.nerdfonts.ple_left_half_circle_thin,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tabline_c = { " " },
+		tab_active = {
+			{ Attribute = { Intensity = "Bold" } },
+			wezterm.nerdfonts.fa_folder_open,
+			"index",
+			{ Attribute = { Italic = true } },
+			{ "parent", padding = 0 },
+			"/",
+			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "ram", "cpu" },
+		tabline_y = { "datetime" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
 })
 
 return config
