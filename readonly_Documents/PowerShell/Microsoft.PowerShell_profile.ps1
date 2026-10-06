@@ -1,24 +1,30 @@
-$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
-$env:BAT_CONFIG_PATH = "$env:USERPROFILE\.config\bat\config"
-$env:FZF_CTRL_T_OPTS = '--preview "bat --color=always --line-range=:500 {}"'
-$env:GOPATH = "$env:USERPROFILE\go"
-$env:PATH += ";C:\msys64\mingw64\bin"
+if (-not [string]::isnullorempty($env:ssh_tty)) {
+    return
+}
 
-New-Alias -Name gst -Value Get-GitStatus
-Set-Alias -Name ls -Value eza
-New-Alias -Name ll -Value invoke-eza-all
-Set-Alias -Name lg -Value lazygit
-Set-Alias -Name y -Value yazi
+$env:yazi_file_one = "c:\program files\git\usr\bin\file.exe"
+$env:bat_config_path = "$env:userprofile\.config\bat\config"
+$env:fzf_ctrl_t_opts = '--preview "bat --color=always --line-range=:500 {}"'
+$env:gopath = "$env:userprofile\go"
+$env:path += ";c:\msys64\mingw64\bin"
+$env:herdr_config_path = "$env:userprofile\.config\herdr\config.toml"
 
-Set-PSReadLineKeyHandler -Key "Ctrl+u" -Function BackwardDeleteLine
-Set-PSReadLineKeyHandler -Key "Ctrl+k" -Function ForwardDeleteLine
+new-alias -name gst -value get-gitstatus
+set-alias -name ls -value eza
+new-alias -name ll -value invoke-eza-all
+set-alias -name lg -value lazygit
+set-alias -name y -value yazi
+
+set-psreadlinekeyhandler -key "ctrl+u" -function backwarddeleteline
+set-psreadlinekeyhandler -key "ctrl+k" -function forwarddeleteline
+remove-psreadlinekeyhandler -chord ctrl+spacebar
 
 function lms
 {
-  llama-server -hf unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL --alias "unsloth/Qwen3.5" --temp 0.6 --top-p 0.95 --ctx-size 16384 --top-k 20 --min-p 0.00 --port 8001 --chat-template-kwargs '{"enable_thinking":false}'
+  llama-server -hf unsloth/qwen3.5-9b-gguf:ud-q4_k_xl --alias "unsloth/qwen3.5" --temp 0.6 --top-p 0.95 --ctx-size 16384 --top-k 20 --min-p 0.00 --port 8001 --chat-template-kwargs '{"enable_thinking":false}'
 }
 
-function Get-GitStatus
+function get-gitstatus
 {
   & git status $args
 }
@@ -36,51 +42,51 @@ function invoke-eza-all
 function touch
 {
   param (
-    [Parameter(Mandatory=$true, ValueFromRemainingArguments=$true)]
+    [parameter(mandatory=$true, valuefromremainingarguments=$true)]
     [string[]]$paths
   )
 
   foreach ($path in $paths)
   {
-    $directory = [System.IO.Path]::GetDirectoryName($path)
+    $directory = [system.io.path]::getdirectoryname($path)
 
-    if (-not [string]::IsNullOrEmpty($directory) -and -not (Test-Path $directory))
+    if (-not [string]::isnullorempty($directory) -and -not (test-path $directory))
     {
-      # Create the directory if it doesn't exist
-      New-Item -ItemType Directory -Path $directory -Force
+      # create the directory if it doesn't exist
+      new-item -itemtype directory -path $directory -force
     }
 
-    if (Test-Path $path)
+    if (test-path $path)
     {
-      # Update the last write time to the current time
-      (Get-Item $path).LastWriteTime = Get-Date
+      # update the last write time to the current time
+      (get-item $path).lastwritetime = get-date
     } else
     {
-      # Create an empty file
-      New-Item -ItemType File -Path $path
+      # create an empty file
+      new-item -itemtype file -path $path
     }
   }
 }
 
-# Change directory to folder when 'q', leave as is with 'Q'
+# change directory to folder when 'q', leave as is with 'q'
 function y
 {
-  $tmp = (New-TemporaryFile).FullName
+  $tmp = (new-temporaryfile).fullname
   yazi.exe $args --cwd-file="$tmp"
-  $cwd = Get-Content -Path $tmp -Encoding UTF8
-  if ($cwd -ne $PWD.Path -and (Test-Path -LiteralPath $cwd -PathType Container))
+  $cwd = get-content -path $tmp -encoding utf8
+  if ($cwd -ne $pwd.path -and (test-path -literalpath $cwd -pathtype container))
   {
-    Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+    set-location -literalpath (resolve-path -literalpath $cwd).path
   }
-  Remove-Item -Path $tmp
+  remove-item -path $tmp
 }
 
-# Tab completions for Chocolatey
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile))
-{
-  Import-Module "$ChocolateyProfile"
-}
+# tab completions for chocolatey
+# $chocolateyprofile = "$env:chocolateyinstall\helpers\chocolateyprofile.psm1"
+# if (test-path($chocolateyprofile))
+# {
+#   import-module "$chocolateyprofile"
+# }
 
 # Tab completions for eza
 . $env:USERPROFILE\Documents\PowerShell\_eza.ps1
@@ -94,13 +100,14 @@ Set-PSReadLineOption -Colors @{
   "Command"="`e[92m"
 }
 
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
 
 # Display fastfetch info on new instances
-fastfetch
+# fastfetch
 
 # Initiate zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+(&mise activate pwsh) | Out-String | Invoke-Expression
 
 # Initialize fnm (Fast Node Manager) for PowerShell
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
