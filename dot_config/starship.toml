@@ -1,25 +1,29 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-scan_timeout = 10
+scan_timeout = 500
 add_newline = false
 
 format = """
 [\u256d\u2500 ](fg:blue)\
-$username\
-$hostname\
+$username \
+$hostname \
 $directory\
 $golang\
 $nodejs\
 $rust\
 $swift\
+$zig\
 $git_branch
-[\u2570\u2500 \u276f ](fg:blue)\
+[\u2570\u2500](fg:blue) \
+$character
 """
 
 [username]
 show_always = true
+format = "[$user](bold purple) in"
 
 [character]
-success_symbol = '[➜](bold green)'
+success_symbol = "[\u276f](fg:blue)"
+error_symbol = "[\u276f](fg:red)"
 
 [aws]
 symbol = " "
@@ -79,8 +83,9 @@ symbol = " "
 symbol = " "
 
 [git_branch]
-symbol = " "
-style = "bold blue"
+symbol = "[](black) "
+style = "bg:black bold white"
+format = "[$symbol$branch]($style)[](black)"
 
 [git_commit]
 tag_symbol = '  '
@@ -106,6 +111,7 @@ symbol = " "
 [hostname]
 ssh_only = true
 ssh_symbol = " "
+format = "[$ssh_symbol$hostname](yellow)"
 
 [java]
 symbol = " "
