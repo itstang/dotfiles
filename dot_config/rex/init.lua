@@ -1,1 +1,2 @@
+require("actions")
 require("bindings")
